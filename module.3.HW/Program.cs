@@ -38,9 +38,9 @@
 
 
             // Calculate and output the grand total of the bill. (format as currency)
-            WriteLine("Your grand total is {0:C} ", subTotal + (subTotal * taxRate)); 
+            WriteLine("Your grand total is {0:C} ", subTotal + (subTotal * taxRate));
 
-
+            ReadKey();
 
 
         }
