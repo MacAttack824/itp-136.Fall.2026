@@ -7,7 +7,7 @@
         static void Main(string[] args)
         {
             string option, age;
-            int sickCost, checkUpCost, wellCost;
+            int sickCost, wellCost;
             string labs = null;
             // 1. Create a menu to include
             // a.Doctor – Sick Appointment
@@ -28,7 +28,6 @@
                     age = ReadLine();
 
                     // a.Ask if child or adult(base visit child = $50, adult = 75)
-
                     // 3.Within Sick appointment(use if/ ese statements)
 
                     if (age == "child")
@@ -85,7 +84,6 @@
                
                         WriteLine("The total cost for the well visit today is {0:C}", wellCost);
                     }
-
                     else if (age == "adult")
                     {
                         WriteLine("The charge for an adult is $100");
@@ -93,10 +91,8 @@
                         
                         WriteLine("The total cost for the well visit today is {0:C}", wellCost);
                     }
-
                     // a.Ask if child or adult(child $75 and adult = 100)
                     // b.Show out the charge
-
 
                     break;
                 
