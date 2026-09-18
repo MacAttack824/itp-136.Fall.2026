@@ -88,7 +88,7 @@
                     {
                         WriteLine("The charge for an adult is $100");
                         wellCost = 100;
-                    // b.Show out the charge
+                    // b.Show out the charge    
                         WriteLine("The total cost for the well visit today is {0:C}", wellCost);
                     }
                     break;
@@ -97,6 +97,7 @@
                     WriteLine("You have not selected a valid option.");
                     break;
             }
+            ReadKey();
         }
     }
 }
