@@ -13,7 +13,7 @@
             // a.Doctor – Sick Appointment
             // b.Doctor – Check - up
 
-            WriteLine("Welcome to Mac's Medical, are you here for a sick appointment or a well check-up? Please enter 'a' for Sick Appointment or 'b' for Check - up");
+            WriteLine("Welcome to Mac's Medical, are you here for a sick appointment or a well check-up? Please enter 'sick' for Sick Appointment or 'well' for Check-up");
 
             option = (ReadLine());
 
@@ -21,7 +21,7 @@
 
             switch(option)
             {
-                case "a":
+                case "sick":
                     WriteLine("You have selected a sick appointment.");
 
                     WriteLine("Is the patient being seen today a child or an adult?");
@@ -69,7 +69,7 @@
 
                     break;
 
-                case "b":
+                case "well":
                     WriteLine("You have selected a well check-up.");
 
                     WriteLine("Is the patient being seen today a child or an adult?");
