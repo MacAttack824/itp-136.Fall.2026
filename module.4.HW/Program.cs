@@ -76,7 +76,7 @@
                     age = ReadLine();
 
                     // 4.Within Check - up(use if/else statement)
-
+                    // a.Ask if child or adult(child $75 and adult = 100)
                     if (age == "child")
                     {
                         WriteLine("The charge for a child is $75");
@@ -88,12 +88,9 @@
                     {
                         WriteLine("The charge for an adult is $100");
                         wellCost = 100;
-                        
+                    // b.Show out the charge
                         WriteLine("The total cost for the well visit today is {0:C}", wellCost);
                     }
-                    // a.Ask if child or adult(child $75 and adult = 100)
-                    // b.Show out the charge
-
                     break;
                 
                 default:
