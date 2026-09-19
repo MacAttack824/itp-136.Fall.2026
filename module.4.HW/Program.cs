@@ -15,7 +15,7 @@
 
             WriteLine("Welcome to Mac's Medical, are you here for a sick appointment or a well check-up? Please enter 'sick' for Sick Appointment or 'well' for Check-up");
 
-            option = (ReadLine());
+            option = ReadLine();
 
             // 2.You will use a switch statement and have a case for each of the above.
 
