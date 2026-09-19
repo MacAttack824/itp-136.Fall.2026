@@ -1,1 +1,1 @@
-Hello, this is my readme.md for ITP 136 Fall 2026, Professor Stephens.
+Hello, this is my README for ITP 136 Fall 2026, Professor Stephens.
