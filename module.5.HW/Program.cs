@@ -1,6 +1,5 @@
 ﻿namespace HW.Week._5
 {
-    using System.Threading;
     using static System.Console;
     class Program
     {
@@ -34,7 +33,6 @@
             for (counter = startNumber + 1; counter <= endNumber; counter++) // 4.The Counter will be incremented by 1 until the loop completes
             {
                 WriteLine("The counter is now at: " + counter);
-                Thread.Sleep(100);
             }
 
             // 3.The Start Number and End Number will be output
