@@ -5,7 +5,7 @@
     {
         static void Main(string[] args)
         {
-            // Call a method call WelcomeStatement
+            // Call a method called WelcomeStatement
             welcomeStatement();
 
             // Call a method called magic number in which you pass the variable secretNumber 
@@ -23,6 +23,7 @@
             // Write the tax rate out within the Main and not the method.
             WriteLine("Your local tax rate is: " + taxRate);
             
+            ReadKey();
         }// closes main
 
         static void welcomeStatement()
@@ -38,9 +39,9 @@
 
         static int askNumber()
         {
-            WriteLine("Please enter a whole number for the first measurement: ");
-            int measurement1 = Convert.ToInt32(ReadLine());
-            return measurement1;
+            WriteLine("Please enter a whole number for the measurement: ");
+            int measurement = Convert.ToInt32(ReadLine());
+            return measurement;
         }
         static void findArea(int a, int b)
         // This method will multiply the two numbers and write the result to the console.
