@@ -13,7 +13,10 @@
             magicNumber(secretNumber);
 
             // Call a method called findArea that catches 2 numbers that the user enters the values for.
-            findArea();
+            int a, b;
+            a = askNumber();
+            b = askNumber();
+            findArea(a, b);
 
             // Call a method called localTaxRate that will return the tax rate entered by the user and assign to a variable called taxRate.
             double taxRate = localTaxRate();
@@ -33,17 +36,16 @@
             WriteLine("The secret number is: " + secretNumber);
         }
 
-        static void findArea()
-        // call a method called findArea that catches 2 numbers that the user enters the values for.
+        static int askNumber()
+        {
+            WriteLine("Please enter a whole number for the first measurement: ");
+            int measurement1 = Convert.ToInt32(ReadLine());
+            return measurement1;
+        }
+        static void findArea(int a, int b)
         // This method will multiply the two numbers and write the result to the console.
         {
-            WriteLine("Please enter the first measurement as a whole number: ");
-            int measurement1 = Convert.ToInt32(ReadLine());
-
-            WriteLine("Please enter the second measurement as a whole number: ");
-            int measurement2 = Convert.ToInt32(ReadLine());
-
-            int area = measurement1 * measurement2;
+            int area = a * b;
             WriteLine("The measurement area is: " + area);
         }
         static double localTaxRate()
