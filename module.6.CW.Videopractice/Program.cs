@@ -48,45 +48,45 @@
         //     int sum = a + b;
         //     WriteLine($"The sum of {a} and {b} is: {sum}");
         // }
-        int menuSelection, keepGoing=1; ;
+        int menuSelection, keepGoing = 1;
         double total = 0;
 
         while (keepGoing == 1)
+        {
+            WriteLine("Welcome to my hotel application!");
+            WriteLine("1-Make Reservation\n2-add-ons\n3-parking\n4-Total");
+            menuSelection = Convert.ToInt32(ReadLine());
+
+            switch(menuSelection)
             {
-                WriteLine("Welcome to my hotel application!");
-                WriteLine("1-Make Reservation\n2-add-ons\n3-parking\n4-Total");
-                menuSelection = Convert.ToInt32(ReadLine());
+                case 1:
+                    // total = total + reserveRoom();
+                    total += reserveRoom();
+                    break;
+                
+                case 2:
+                    total += addOn();
+                    break;
 
-                switch(menuSelection)
-                {
-                    case 1:
-                        // total = total + reserveRoom();
-                        total += reserveRoom();
-                        break;
-                    
-                    case 2:
-                        total += addOn();
-                        break;
+                case 3:
+                    total += parkingTotal();
+                    break;
 
-                    case 3:
-                        total += parkingTotal();
-                        break;
+                case 4:
+                    WriteLine("Your total is {0:C}", total);
+                    break;
 
-                    case 4:
-                        WriteLine("Your total is {0:C}", total);
-                        break;
-
-                    default:
-                        WriteLine("You did not make a valid selection");
-                        break;
-                }
-                WriteLine("1 to continue 2 to end");
-                keepGoing = Convert.ToInt32(ReadLine());
-
+                default:
+                    WriteLine("You did not make a valid selection");
+                    break;
             }
+            WriteLine("1 to continue 2 to end");
+            keepGoing = Convert.ToInt32(ReadLine());
 
-            WriteLine("Thank you for using my reservation system");
-            ReadKey();
+        }
+
+        WriteLine("Thank you for using my reservation system");
+        ReadKey();
         }// ends main
 
         static double reserveRoom()
