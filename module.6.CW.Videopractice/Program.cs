@@ -73,7 +73,7 @@
                         break;
 
                     case 4:
-                        WriteLine("Your total is {0}", total);
+                        WriteLine("Your total is {0:C}", total);
                         break;
 
                     default:
@@ -85,7 +85,7 @@
 
             }
 
-            WriteLine("Thank youfor using my reservation system");
+            WriteLine("Thank you for using my reservation system");
             ReadKey();
         }// ends main
 
@@ -126,6 +126,7 @@
             if (userInput == "y")
                 cost += 25;
             WriteLine("Would you like waters? $10 n/y");
+            userInput = ReadLine();
             if (userInput == "y")
                 cost += 10;
 
