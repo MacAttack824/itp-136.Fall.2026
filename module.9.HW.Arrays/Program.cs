@@ -1,4 +1,4 @@
-﻿namespace module._9.HW
+﻿namespace module._9.HW.Arrays
 {
     internal class Program
     {
