@@ -6,9 +6,13 @@ namespace Practice.RepairCheckout
     {
         static void Main(string[] args)
         {
-            WelcomeStatement();
-            WriteLine("Starter project: complete the TODOs using ASSIGNMENT.md.");
+        
+        int serviceCount = 0;
+        decimal subtotal = 0m;
 
+
+            string customerName = WelcomeStatement();
+            
             // TODO: Read and validate the customer's name.
             // TODO: Create subtotal and serviceCount variables.
             // TODO: Repeat the menu until checkout. Add each selected service.
@@ -16,9 +20,19 @@ namespace Practice.RepairCheckout
             // TODO: Calculate discount and tax, then call PrintReceipt.
         }
 
-        static void WelcomeStatement()
+        static string WelcomeStatement()
         {
             // TODO: Display your shop's greeting.
+            WriteLine("Please enter your name: " );
+            string? customerName = ReadLine();
+
+            while (String.IsNullOrWhiteSpace(customerName))
+            {
+                WriteLine("Please enter a valid name: ");
+                customerName = ReadLine();
+            }
+            WriteLine($"Welcome to Mac's Auto, {customerName}!");
+            return customerName;
         }
 
         static int ReadMenuChoice()
