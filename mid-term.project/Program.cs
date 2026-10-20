@@ -111,14 +111,14 @@
         static void DisplayReceipt(string name, string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal taxRate)
         {
             WriteLine("\n");
-            Console.ForegroundColor = ConsoleColor.Green;
+            ForegroundColor = ConsoleColor.Green;
             WriteLine("Thank you {0} for choosing MacAire today, your receipt is below: \n", name);
             WriteLine("****************************************************************");
             WriteLine("You chose a travel date of {0}", travelDate);
             WriteLine("For seats, your cost is {0:C} and bags cost {1:C}", seatCost, bagCost);
-            WriteLine("Subtotal ======{0:C} \nTax ==========={1:P} \nGrand total ==={2:C} ", seatCost + bagCost, taxRate, totalCost);
+            WriteLine("Subtotal ------{0:C} \nTax --{1:P}-----{3:C} \nGrand total ---{2:C} ", seatCost + bagCost, taxRate, totalCost, (seatCost + bagCost) * taxRate);
             WriteLine("****************************************************************");
-            Console.ResetColor();
+            ResetColor();
         }
     }
  }
