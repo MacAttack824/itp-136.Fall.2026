@@ -1,5 +1,6 @@
 ﻿namespace mid_term.project
  {
+    using System;
     using static System.Console;
     internal class Program
     {
@@ -12,7 +13,7 @@
             WelcomePrompt();
 
             // Within the main Collect user information // Name // Address // Date of travel
-            WriteLine("Please enter you name: ");
+            WriteLine("Please enter your name: ");
             name = ReadLine();
             WriteLine("Please enter your street name and house number: ");
             street = ReadLine();
@@ -25,17 +26,15 @@
             WriteLine("When is your intended date of travel? ");
             travelDate = ReadLine();
 
-            //TO DO
-            // Create method to collect bag data (think about returning values and passing values. Request number of bags. Calculate baggage total. Calculate baggage total amount based on $25 a bag
-            decimal bagCost = GetBagCost();
-
             // Create method to collect seats
             decimal seatCost = GetSeatCost(travelDate);
 
-            decimal subTotal = bagCost + seatCost;
-            decimal totalCost = subTotal + (subTotal * taxRate);
+            // Create method to collect bag data (think about returning values and passing values. Request number of bags. Calculate baggage total. Calculate baggage total amount based on $25 a bag
+            decimal bagCost = GetBagCost();
 
-            DisplayReceipt(travelDate, bagCost, seatCost, totalCost, subTotal, taxRate);
+            decimal totalCost = CalculateTotal(bagCost, seatCost, taxRate);
+
+            DisplayReceipt(name, travelDate, bagCost, seatCost, totalCost, taxRate);
 
             ReadKey();
         }
@@ -54,7 +53,7 @@
 
             while (bags < 0) //     The user could say they don’t want to check bags. So ask if they have bags to check or not.
             {
-                WriteLine("Please enter a positive integer");
+                WriteLine("Please enter a positive integer or zero for no bags");
                 WriteLine("How many bags do you plan on bringing? Price per bag is $25");
                 bags = Convert.ToInt32(ReadLine());
             }
@@ -90,6 +89,7 @@
             {
                 case 0:
                     WriteLine("No charge for seats!");
+                    seatCost = 0m;
                     break;
 
                 case >= 1:
@@ -98,14 +98,27 @@
                     break;
             }
             return seatCost;
+        }
+        static decimal CalculateTotal(decimal bagCost, decimal seatCost, decimal taxRate)
+        {
+            decimal totalCost = 0m;
+            decimal subTotal = bagCost + seatCost;
+           
+            totalCost = subTotal + (subTotal * taxRate);
+            return totalCost;
 
         }
-        static void DisplayReceipt(string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal subTotal, decimal taxRate)
+        static void DisplayReceipt(string name, string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal taxRate)
         {
-            WriteLine("Thank you for choosing MacAire today, your receipt is below: \n");
+            WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            WriteLine("Thank you {0} for choosing MacAire today, your receipt is below: \n", name);
+            WriteLine("****************************************************************");
             WriteLine("You chose a travel date of {0}", travelDate);
-            WriteLine("The bags cost {0:C} and the seats cost {1:C}", bagCost, seatCost);
-            WriteLine("Your subtotal is {0:C} and your total today with {1:P} tax is {2:C} ", subTotal, taxRate, totalCost);
+            WriteLine("For seats, your cost is {0:C} and bags cost {1:C}", seatCost, bagCost);
+            WriteLine("Subtotal ======{0:C} \nTax ==========={1:P} \nGrand total ==={2:C} ", seatCost + bagCost, taxRate, totalCost);
+            WriteLine("****************************************************************");
+            Console.ResetColor();
         }
     }
  }
