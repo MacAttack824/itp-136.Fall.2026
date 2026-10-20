@@ -6,6 +6,7 @@
         static void Main(string[] args)
         {
             string name, street, city, zip, state, travelDate;
+            decimal taxRate = 0.05m;
 
             // Greet the user
             WelcomePrompt();
@@ -31,10 +32,11 @@
             // Create method to collect seats
             decimal seatCost = GetSeatCost(travelDate);
 
-            decimal totalCost = GetTotal(bagCost, seatCost);
+            decimal subTotal = bagCost + seatCost;
+            decimal totalCost = subTotal + (subTotal * taxRate);
 
-            DisplayReceipt(bags, seats, travelDate, bagCost, seatCost, totalCost, subTotal, tax);
-            
+            DisplayReceipt(travelDate, bagCost, seatCost, totalCost, subTotal, taxRate);
+
             ReadKey();
         }
 
@@ -50,7 +52,7 @@
             WriteLine("How many bags do you plan on bringing? Price per bag is $25");
             bags = Convert.ToInt32(ReadLine());
 
-            while (bags > 0) //     The user could say they don’t want to check bags. So ask if they have bags to check or not.
+            while (bags < 0) //     The user could say they don’t want to check bags. So ask if they have bags to check or not.
             {
                 WriteLine("Please enter a positive integer");
                 WriteLine("How many bags do you plan on bringing? Price per bag is $25");
@@ -65,8 +67,8 @@
             else
             {
                 bagCost = bags * 25m;
-                WriteLine("Fee for baggage will be {0:C}", bagCost);
-                return bagCost + bags;
+                //WriteLine("Fee for baggage will be {0:C}", bagCost);
+                return bagCost;
             }
         }
         static decimal GetSeatCost(string travelDate)
@@ -92,28 +94,18 @@
 
                 case >= 1:
                     seatCost = seats * 30m;  // Calculate seat total amount based on $30 a seat
+                    //WriteLine("Fee for seats will be {0:C}\n", seatCost);
                     break;
             }
-            return seatCost + seats;
+            return seatCost;
 
         }
-        static decimal GetTotal(decimal bagCost, decimal seatCost)
+        static void DisplayReceipt(string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal subTotal, decimal taxRate)
         {
-            // Create receipt that shows the subtotal, tax at 5%, and grand total.
-            //     Your receipt should have more than just data, add some formatting to the receipt.
-            //     Maybe *** or color. Also make sure you format currency with $
-            decimal tax = .05m;
-            decimal totalCost;
-            decimal subTotal = bagCost + seatCost;
-            totalCost = subTotal + (subTotal * tax);
-            return totalCost + subTotal + tax;
-        }
-        static void DisplayReceipt(int bags, int seats, string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal subTotal, decimal tax)
-        {
-            WriteLine("Thank you for choosing MacAire today, your receipt is below: ");
-            WriteLine("You chose {0} bags and {1} seats for travel on {2}", bags, seats, travelDate);
+            WriteLine("Thank you for choosing MacAire today, your receipt is below: \n");
+            WriteLine("You chose a travel date of {0}", travelDate);
             WriteLine("The bags cost {0:C} and the seats cost {1:C}", bagCost, seatCost);
-            WriteLine("Your subtotal is {0:C} and your total today with {1:P} tax is {2:C} ", subTotal, tax, totalCost);
+            WriteLine("Your subtotal is {0:C} and your total today with {1:P} tax is {2:C} ", subTotal, taxRate, totalCost);
         }
     }
  }
