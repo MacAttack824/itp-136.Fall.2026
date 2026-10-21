@@ -13,8 +13,9 @@ class Program
         WriteLine("Please enter how many seats you wish to purchase: "); 
         seats = Convert.ToInt32(ReadLine()); // convert default string input to integer
 
-         while (seats > seatCounter) // Loop through each seat to collect and accumulate traveler baggage
+         while (seatCounter < seats) // Loop through each seat to collect and accumulate traveler baggage
         {
+            // need to account for negative bags
             WriteLine("How many bags does passenger {0} need?", seatCounter +1); // ask for bag count per traveler
             bags = Convert.ToInt32(ReadLine());
 
@@ -23,15 +24,6 @@ class Program
             seatCounter ++; //increment seatCounter for next iteration
         }
         WriteLine("Total bags for your traveling party is {0}", totalBags);
-
-
-
-
-
-
-
-
-
 
     }
 }
