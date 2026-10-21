@@ -18,6 +18,11 @@ class Program
             // need to account for negative bags
             WriteLine("How many bags does passenger {0} need?", seatCounter +1); // ask for bag count per traveler
             bags = Convert.ToInt32(ReadLine());
+            while (bags < 0)
+            {
+                WriteLine("Please enter a realistic number of bags for traveling");
+                bags = Convert.ToInt32(ReadLine());
+            }
 
             totalBags = totalBags + bags; // running total
 
