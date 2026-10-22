@@ -30,7 +30,7 @@
             decimal seatCost = GetSeats();
             // Create method to collect bag count
             decimal bagCost = GetBags();
-
+            // method to calculate total
             decimal totalCost = CalculateTotal(bagCost, seatCost, taxRate);
 
             DisplayReceipt(name, street, city, state, zip , travelDate, bagCost, seatCost, totalCost, taxRate);
@@ -115,7 +115,7 @@
             decimal totalCost = 0m;
             decimal subTotal = bagCost + seatCost;
            
-            totalCost = subTotal + (subTotal * taxRate);
+            totalCost = subTotal + (subTotal * taxRate); // calculate total with tax rate %
             return totalCost;
 
         }
@@ -128,7 +128,7 @@
             WriteLine("Traveling from {0}, {1}, {2} {3}", street, city, state, zip);
             WriteLine("You chose a travel date of {0}", travelDate);
             WriteLine("For seats, your cost is {0:C} and bags cost {1:C}", seatCost, bagCost);
-            WriteLine("Subtotal ------{0:C} \nTax --{1:P}-----{3:C} \nGrand total ---{2:C} ", seatCost + bagCost, taxRate, totalCost, (seatCost + bagCost) * taxRate);
+            WriteLine("Subtotal ------{0:C} \nTax --{1:P0}-----{3:C} \nGrand total ---{2:C} ", seatCost + bagCost, taxRate, totalCost, (seatCost + bagCost) * taxRate);
             WriteLine("****************************************************************");
             ResetColor();
         }
