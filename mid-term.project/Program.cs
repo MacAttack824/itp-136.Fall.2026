@@ -27,64 +27,47 @@
             travelDate = ReadLine();
 
             // Create method to collect seats
-            decimal seatCost = GetSeatCost(travelDate);
-
-            // Create method to collect bag data (think about returning values and passing values. Request number of bags. Calculate baggage total. Calculate baggage total amount based on $25 a bag
-            decimal bagCost = GetBagCost();
+            decimal seatCost = GetSeats();
+            // Create method to collect bag count
+            decimal bagCost = GetBags();
 
             decimal totalCost = CalculateTotal(bagCost, seatCost, taxRate);
 
-            DisplayReceipt(name, travelDate, bagCost, seatCost, totalCost, taxRate);
+            DisplayReceipt(name, street, city, state, zip , travelDate, bagCost, seatCost, totalCost, taxRate);
 
             ReadKey();
         }
-
         static void WelcomePrompt()
         {
             WriteLine("Welcome to MacAire. To get started, let's get some information about yourself.");
         }
-        static decimal GetBagCost()
+        static decimal GetSeats()
         {
-            int bags;
-            decimal bagCost = 0m;
-
-            WriteLine("How many bags do you plan on bringing? Price per bag is $25");
-            bags = Convert.ToInt32(ReadLine());
-
-            while (bags < 0) //     The user could say they don’t want to check bags. So ask if they have bags to check or not.
+            // use a while loop to loop through your code based on number of seats entered.
+            int seatCounter = 0;
+            decimal seatCost = 0m;                        
+            WriteLine("Please enter how many seats you wish to purchase: Each seat is $30"); 
+            int seats = Convert.ToInt32(ReadLine()); // convert default string input to integer
+            while (seats < 0) // reject negative seat counts
             {
-                WriteLine("Please enter a positive integer or zero for no bags");
-                WriteLine("How many bags do you plan on bringing? Price per bag is $25");
-                bags = Convert.ToInt32(ReadLine());
-            }
-            if (bags == 0)
-            {
-                bagCost = 0m;
-                WriteLine("No charge for baggage!");
-                return bagCost;
-            }
-            else
-            {
-                bagCost = bags * 25m;
-                //WriteLine("Fee for baggage will be {0:C}", bagCost);
-                return bagCost;
-            }
-        }
-        static decimal GetSeatCost(string travelDate)
-        {
-            int seats = 0;
-            decimal seatCost = 0m;
-
-            WriteLine("How many seats are needed on your travel date of {0}?", travelDate); // Request number of seats
-            // You are required to use an if/else or switch. The user can say they don’t want to pay for seats.
-            seats = Convert.ToInt32(ReadLine());
-
-            while (seats < 0)
-            {
-                WriteLine("Please enter a positive integer for the number of seats requested or zero if you do not want to pay for seats.");
+                WriteLine("Please enter a realistic number of travelers");
                 seats = Convert.ToInt32(ReadLine());
             }
-
+            
+            string[] names = new string[seats];
+            while (seatCounter < seats) // Loop through each seat to collect and request traveler name
+            {
+                WriteLine("Please enter the name of passenger {0} :", seatCounter + 1); // ask for name per traveler
+                names[seatCounter] = ReadLine();
+                
+                seatCounter ++; //increment seatCounter for next iteration
+            }
+            WriteLine("Total travelers is {0}", seatCounter);
+            WriteLine("Travels going are :");
+            for (int x = 0; x < names.Length; x++)
+                {
+                WriteLine("{0}", names[x]);
+                }
             switch(seats)
             {
                 case 0:
@@ -94,10 +77,38 @@
 
                 case >= 1:
                     seatCost = seats * 30m;  // Calculate seat total amount based on $30 a seat
-                    //WriteLine("Fee for seats will be {0:C}\n", seatCost);
                     break;
             }
             return seatCost;
+        }
+        static decimal GetBags()
+        {
+            WriteLine("Please enter the total number of bags that are traveling? Price per bag is $25");
+            int bags = Convert.ToInt32(ReadLine());
+
+            while (bags < 0) //     The user could say they don’t want to check bags. So ask if they have bags to check or not.
+            {
+                WriteLine("Please enter a positive integer or zero for no bags");
+                WriteLine("How many bags do you plan on bringing? Price per bag is $25");
+                bags = Convert.ToInt32(ReadLine());
+            }
+            if (bags == 0)
+            {
+                decimal bagCost = 0m;
+                WriteLine("No charge for baggage!");
+                return bagCost;
+            }
+            else
+            {
+                for (int x = 0; x < bags; x++)
+                {
+                    WriteLine("Is bag {0} a checked bag or carry-on bag?", x + 1);
+                    string bagType = ReadLine();
+                }
+                
+                decimal bagCost = bags * 25m;
+                return bagCost;
+            }
         }
         static decimal CalculateTotal(decimal bagCost, decimal seatCost, decimal taxRate)
         {
@@ -108,12 +119,13 @@
             return totalCost;
 
         }
-        static void DisplayReceipt(string name, string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal taxRate)
+        static void DisplayReceipt(string name, string street, string city, string state, string zip, string travelDate, decimal bagCost, decimal seatCost, decimal totalCost, decimal taxRate)
         {
             WriteLine("\n");
             ForegroundColor = ConsoleColor.Green;
             WriteLine("Thank you {0} for choosing MacAire today, your receipt is below: \n", name);
             WriteLine("****************************************************************");
+            WriteLine("Traveling from {0}, {1}, {2} {3}", street, city, state, zip);
             WriteLine("You chose a travel date of {0}", travelDate);
             WriteLine("For seats, your cost is {0:C} and bags cost {1:C}", seatCost, bagCost);
             WriteLine("Subtotal ------{0:C} \nTax --{1:P}-----{3:C} \nGrand total ---{2:C} ", seatCost + bagCost, taxRate, totalCost, (seatCost + bagCost) * taxRate);
