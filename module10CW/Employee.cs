@@ -9,7 +9,7 @@ namespace Week10CW
     public class Employee
     {
         // property variables
-        int empID;
+        int empId;
         string fName, lName;
 
         // property
