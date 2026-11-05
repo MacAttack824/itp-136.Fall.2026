@@ -35,12 +35,26 @@
                 WriteLine("\nException Caught: " + e);
             }
 
-
             WriteLine("Index out of range Code");
 
             string[] numberArray = { "Gretsky", "Jordan", "Ruth" };
 
-            WriteLine("")
+            try
+            {
+                WriteLine("Which element do you want to see?");
+                int elementNumber = Convert.ToInt32(ReadLine());
+
+                WriteLine(numberArray[elementNumber]);
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                //WriteLine(e);
+                WriteLine("\nYou must enter a value between 0 and 2");
+            }
+
+
+
+
 
             ReadKey();
 
