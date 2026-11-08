@@ -5,66 +5,77 @@ class Program
         // two numbers entered by the user. The user will also choose the math function to be used. 
         // There should be try catch error handling on your math.
     static void Main(string[] args)
-    {
-        // 1. Create three decimal variables. Two will be used for input and one for output. 
-        // 2. Ask the user to input values.
-
+    {  
         while (true)
         {
-            WriteLine("Please enter the first number:");
-            string num1 = ReadLine();
-            WriteLine("Please enter a second number: ");
-            string num2 = ReadLine();
-            decimal result = 0;
-            if (num1 == "exit" || num2 == "exit")
+            string num1 = GetNumber("Please enter the first number:"); // call method to get a number
+            if (num1 == "exit") // exits if user wishes
             {
                 break;
             }
-            
-            WriteLine("1 - Addition, 2 - Multiplication, 3 - Subtraction, 4 - Division");
-            int maths = Convert.ToInt32(ReadLine());
+            string num2 = GetNumber("Please enter the second number:"); // call method to get a number
+            if (num2 == "exit") // exits if user wishes
+            {
+                break;
+            }
+            try // try block to test for exceptoins
+            {
+                decimal number1 = Convert.ToDecimal(num1); // convert string input to decimal in case user entered 'bacon'
+                decimal number2 = Convert.ToDecimal(num2);
+                decimal result;                            // name variables
 
-            decimal number1 = Convert.ToDecimal(num1);
-            decimal number2 = Convert.ToDecimal(num2);
+                result = Mathing(number1, number2);        // call switch method to work the math and numbers
 
+                WriteLine($"Numbers entered were {num1} and {num2}, the result is {result}"); // result output to user
+            }
+            catch (Exception e) // if try doesn't work, explain to user the error
+            {
+                WriteLine($"You've found an error!!! : {e.Message}");
+            }
+        }
+    }
+    static string GetNumber(string prompt)
+    {
+        WriteLine(prompt); // ask for first number input 
+        string value = ReadLine();
+        return value;
+    }
 
-            switch(maths)
+    static decimal Mathing(decimal number1, decimal number2) // method outside of main
+    {
+        WriteLine("1 - Addition, 2 - Multiplication, 3 - Subtraction, 4 - Division"); //switch to choose math operation
+        string maths = ReadLine(); // use switch numbers 1-4 to enter an integer
+        if (maths == "exit")
+        {
+            Environment.Exit(0);
+            return 0;
+        }
+        else
+        {
+            int operation = Convert.ToInt32(maths);
+            decimal result;
+
+            switch(operation)
             {
                 case 1:
                     result = number1 + number2;
-                    break;
+                    return result;
 
                 case 2:
                     result = number1 * number2;
-                    break;
+                    return result;
 
                 case 3:
                     result = number1 - number2;
-                    break;
+                    return result;
 
                 case 4:
                     result = number1 / number2;
-                    break;
-
+                    return result;
+                
                 default:
-                    break;
+                    throw new ArgumentException("Invalid maths selected."); // if user does not choose 1-4, throws argument exception
             }
-
-
-
-
-            WriteLine($"Numbers entered were {num1} and {num2}, result is {result}");
         }
-        // 3) Ask user to choose which math operation to use (1 - Addition, 2 - Multiplication, 3 - Subtraction, 4 - Division)
-
-        // 4) Use an IF or Switch statement to use the proper operation.
-
-        // 5) Math operation will be surrounded by a try catch statement to catch and errors 
-
-        // 6) Error should be output to the user.
-
-        // 7) Answer should be output to the user if there is no error.
-
-        // 8) Program must run without any errors.
     }
 }
