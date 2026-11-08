@@ -47,8 +47,9 @@ class Program
         string maths = ReadLine(); // use switch numbers 1-4 to enter an integer
         if (maths == "exit")
         {
-            Environment.Exit(0);
-            return 0;
+            Environment.Exit(0); //  MAC - "How do I terminate a program if I am executing code in a method? like in an 'if' statement?"
+            return 0;  // ChatGPT - "Ah, a useful bit of C# wizardry! 🧙‍♂️ It depends on whether you want to exit the method or terminate the entire program.
+                       //  1. return; — Exit the current method, 2. Environment.Exit(0); — Terminate the entire program
         }
         else
         {
