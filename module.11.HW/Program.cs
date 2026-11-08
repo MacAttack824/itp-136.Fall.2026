@@ -26,7 +26,7 @@ class Program
 
                 result = Mathing(number1, number2);        // call switch method to work the math and numbers
 
-                WriteLine($"Numbers entered were {num1} and {num2}, the result is {result}"); // result output to user
+                WriteLine($"Numbers entered were {number1} and {number2}, the result is {result}"); // result output to user
             }
             catch (Exception e) // if try doesn't work, explain to user the error
             {
