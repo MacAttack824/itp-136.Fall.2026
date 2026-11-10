@@ -8,12 +8,12 @@ class Program
     {  
         while (true)
         {
-            string num1 = GetNumber("Please enter the first number:"); // call method to get a number
+            string num1 = GetNumber("Please enter the first number or type 'exit' to quit:"); // call method to get a number
             if (num1 == "exit") // exits if user wishes
             {
                 break;
             }
-            string num2 = GetNumber("Please enter the second number:"); // call method to get a number
+            string num2 = GetNumber("Please enter the second number or type 'exit' to quit:"); // call method to get a number
             if (num2 == "exit") // exits if user wishes
             {
                 break;
@@ -43,7 +43,7 @@ class Program
 
     static decimal Mathing(decimal number1, decimal number2) // method outside of main
     {
-        WriteLine("1 - Addition, 2 - Multiplication, 3 - Subtraction, 4 - Division"); //switch to choose math operation
+        WriteLine("1 - Addition, 2 - Multiplication, 3 - Subtraction, 4 - Division or type 'exit' to quit: "); //switch to choose math operation
         string maths = ReadLine(); // use switch numbers 1-4 to enter an integer
         if (maths == "exit")
         {
