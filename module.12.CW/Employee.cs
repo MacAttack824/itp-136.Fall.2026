@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography.X509Certificates;
 
 namespace module._12.CW
 {
-    internal class Employee
+    public class Employee
     {
         // variables
         int employeeNum;
@@ -23,8 +18,8 @@ namespace module._12.CW
         {
             employeeNum = empNum;
             salary = s;
-            lastName = ln;
-            firstname = fn;
+            lname = ln;
+            fname = fn;
             position = pos;
         }
 
