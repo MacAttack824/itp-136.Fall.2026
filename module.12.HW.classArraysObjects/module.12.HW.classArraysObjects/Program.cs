@@ -105,8 +105,7 @@ namespace module._12.HW.classArraysObjects
                 {
                     WriteLine("Invalid choice, if you wish to end the program, press 4.");
                 }
-        }
-            ReadKey();
+            }
         }
         static void populatePart(ref Part p)
         {
