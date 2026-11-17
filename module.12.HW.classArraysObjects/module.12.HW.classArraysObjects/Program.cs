@@ -17,7 +17,7 @@ namespace module._12.HW.classArraysObjects
             // Create an array of parts objects
 
             int numParts;
-            Part[] partArray = null; // initialize empty array of Part class.
+            Part[] partArray = null; // declare a Part array variable; no array created yet
 
             bool partsAdded = false; // quits adding parts when true
 
@@ -51,7 +51,7 @@ namespace module._12.HW.classArraysObjects
                             break;
 
                         case 2: // view parts list
-                            if (partsAdded == false) // validates parts added array
+                            if (partsAdded == false) // Allow parts to only be entered once
                             {
                                 WriteLine("Add parts first!");
                             }
@@ -126,7 +126,9 @@ namespace module._12.HW.classArraysObjects
         static void partDisplay(Part p) // display a single part only carries a single object from partArray[selectedPart - 1]
         {
             WriteLine("{0,12}{1,20}{2,30}{3,20}", "Part Number", "Part Name", "Part Description", "Part Cost");
-            WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);  // p = object blueprint here, object.x displays the selected object field
+            WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);  // p references the selected Part object; its properties provide the data to display
+                                                                                                                // p.x displays the selected object field
+
         }
     }
 }
