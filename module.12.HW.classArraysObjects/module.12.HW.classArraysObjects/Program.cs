@@ -24,68 +24,88 @@ namespace module._12.HW.classArraysObjects
             while (true)
             {
                 WriteLine("Choose an option for parts: 1 - Add Parts, 2 - View Parts List, 3 - View Part Detail, 4- Exit");
-                int choice = Convert.ToInt32(ReadLine());
-                switch (choice)
+                try
                 {
-                    case 1: // add parts class array
-                        if (partsAdded == false)
-                        {
-                            WriteLine("How many parts do you wish to enter? "); // Ask the user how many objects they wish to enter
-                            numParts = Convert.ToInt32(ReadLine());
-                            partArray = new Part[numParts];
-
-                            // Loop appropriately to collect the data needed to populate the objects in the array
-                            for (int x = 0; x < partArray.Length; x++)
+                    int choice = Convert.ToInt32(ReadLine());
+                    switch (choice)
+                    {
+                        case 1: // add parts class array
+                            if (partsAdded == false)
                             {
-                                populatePart(ref partArray[x]);
+                                WriteLine("How many parts do you wish to enter? "); // Ask the user how many objects they wish to enter
+                                numParts = Convert.ToInt32(ReadLine());
+                                partArray = new Part[numParts];
+
+                                // Loop appropriately to collect the data needed to populate the objects in the array
+                                for (int x = 0; x < partArray.Length; x++)
+                                {
+                                    populatePart(ref partArray[x]);
+                                }
+                                partsAdded = true;
                             }
-                            partsAdded = true;
-                        }
-                        else
-                        {
-                            WriteLine("No parts can be added at this time!");
-                        }
-
-                        break;
-
-                    case 2: // view parts list
-                        if (partsAdded == false)
-                        {
-                            WriteLine("Add parts first!");
-                        }
-                        else // Give the user a menu of all parts
-                        {
-                            WriteLine("{0,12}{1,15}{2,20}{3,10}", "Part Number", "Part Name", "Part Description", "Part Cost");
-                            for (int y = 0; y < partArray.Length; y++)
+                            else
                             {
-                                WriteLine("{0,8}{1,12}{2,15}{3,20}{4,10:C2}", y + 1, partArray[y].PartNumber, partArray[y].PartName, partArray[y].PartDescription, partArray[y].PartCost);
+                                WriteLine("No parts can be added at this time!");
                             }
-                        }
-                        break;
 
-                    case 3: // view part detail on selected part
+                            break;
 
-                        WriteLine("Which part would you like to view detail on? "); // Ask the user which part they would like to view data on
-                        for (int z = 0; z < partArray.Length; z++)
-                        {
-                            WriteLine("{0,8}{1,12}{2,15}{3,20}{4,10:C2}", z + 1, partArray[z].PartNumber, partArray[z].PartName, partArray[z].PartDescription, partArray[z].PartCost);
-                        }
+                        case 2: // view parts list
+                            if (partsAdded == false)
+                            {
+                                WriteLine("Add parts first!");
+                            }
+                            else // Give the user a menu of all parts
+                            {
+                                WriteLine("{0,8}{1,20}{2,20}{3,30}{4,20}", "Index", "Part Number", "Part Name", "Part Description", "Part Cost");
+                                for (int y = 0; y < partArray.Length; y++)
+                                {
+                                    WriteLine("{0,8}{1,20}{2,20}{3,30}{4,20:C2}", y + 1, partArray[y].PartNumber, partArray[y].PartName, partArray[y].PartDescription, partArray[y].PartCost);
+                                }
+                            }
+                            break;
 
-                        int selectedPart = Convert.ToInt32(ReadLine());
+                        case 3: // view part detail on selected part
+                            if (partsAdded == false)
+                            {
+                                WriteLine("Add parts first!");
+                            }
+                            else // Give the user a menu of all parts
+                            {
+                                try // try block to test if array index is IN bounds
+                                {
+                                    WriteLine("Which part would you like to view detail on? "); // Ask the user which part they would like to view data on
+                                    for (int z = 0; z < partArray.Length; z++)
+                                    {
+                                        WriteLine("{0,8}{1,20}{2,20}", z + 1, partArray[z].PartNumber, partArray[z].PartName);
+                                    }
 
-                        partDisplay(partArray[selectedPart - 1]); //Create a method to print out the object selected by user values
+                                    int selectedPart = Convert.ToInt32(ReadLine());
 
+                                    partDisplay(partArray[selectedPart - 1]); //Create a method to print out the object selected by user values
+                                }
+                                catch (IndexOutOfRangeException e) // if selected array index is out of bounds
+                                {
+                                    WriteLine($"Please choose an existing part!");
+                                }
+                            }
 
-                        break;
+                            break;
 
-                    case 4: // exit program
+                        case 4: // exit program
 
-                        return;
+                            return;
 
-                    default:
-                        break;
+                        default:
+                            WriteLine("Invalid menu selection. Choose 1 through 4.");
+                            break;
+                    }
                 }
-            }
+                catch (FormatException)
+                {
+                    WriteLine("Invalid choice, if you wish to end the program, press 4.");
+                }
+        }
             ReadKey();
         }
         static void populatePart(ref Part p)
@@ -106,8 +126,8 @@ namespace module._12.HW.classArraysObjects
         }
         static void partDisplay(Part p)
         {
-            WriteLine("{0,12}{1,15}{2,20}{3,10}", "Part Number", "Part Name", "Part Description", "Part Cost");
-            WriteLine("{0,12}{1,15}{2,20}{3,10:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);
+            WriteLine("{0,12}{1,20}{2,30}{3,20}", "Part Number", "Part Name", "Part Description", "Part Cost");
+            WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);
         }
     }
 }
