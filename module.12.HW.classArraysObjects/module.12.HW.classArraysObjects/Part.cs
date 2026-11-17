@@ -11,26 +11,26 @@ namespace module._12.HW.classArraysObjects
         //1.Create a Parts class
         // variables
         string partNumber; // most parts contain numbers and letter. GM (current employee) uses all numbers in their part numbers
-        string partName;
+        string partName; // Field
         string partDes;
-        decimal partCost; // decimal to account for part cost to two decimal places
+        decimal partCost; // decimal to account for part cost 
 
         // constructor
-        public Part(string number, string name, string des, decimal cost)
+        public Part(string number /* Constructor parameter */ , string name, string des, decimal cost) // whole thing is the constructor of the class
         {
-            partNumber = number;
+            partNumber = number;  // Assignment to a field
             partName = name;
             partDes = des;
             partCost = cost;
         }
 
         // properties ... a.Properties for PartNum, Part Name, Part Description, and Cost
-        public string PartNumber
+        public string PartNumber   // Property
         {
             get { return partNumber; }
             set { partNumber = value; }
         }
-        public string PartName
+        public string PartName   // Property
         {
             get { return partName; }
             set { partName = value; }

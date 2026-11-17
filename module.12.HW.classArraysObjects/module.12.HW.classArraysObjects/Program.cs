@@ -17,24 +17,24 @@ namespace module._12.HW.classArraysObjects
             // Create an array of parts objects
 
             int numParts;
-            Part[] partArray = null;
+            Part[] partArray = null; // initialize empty array of Part class.
 
             bool partsAdded = false; // quits adding parts when true
 
-            while (true)
+            while (true)             // loops through program so user can view parts and view detail on parts while program runs
             {
-                WriteLine("Choose an option for parts: 1 - Add Parts, 2 - View Parts List, 3 - View Part Detail, 4- Exit");
+                WriteLine("Choose an option for parts: 1 - Add Parts, 2 - View Parts List, 3 - View Part Detail, 4- Exit"); // switch statement to make choices
                 try
                 {
                     int choice = Convert.ToInt32(ReadLine());
                     switch (choice)
                     {
-                        case 1: // add parts class array
-                            if (partsAdded == false)
+                        case 1:                      // add parts class array
+                            if (partsAdded == false) // validates parts added array
                             {
                                 WriteLine("How many parts do you wish to enter? "); // Ask the user how many objects they wish to enter
-                                numParts = Convert.ToInt32(ReadLine());
-                                partArray = new Part[numParts];
+                                numParts = Convert.ToInt32(ReadLine());  // stores user entered # to loop through entering objects to parts class
+                                partArray = new Part[numParts];          // initialize new array with size given by user 'numParts'
 
                                 // Loop appropriately to collect the data needed to populate the objects in the array
                                 for (int x = 0; x < partArray.Length; x++)
@@ -51,7 +51,7 @@ namespace module._12.HW.classArraysObjects
                             break;
 
                         case 2: // view parts list
-                            if (partsAdded == false)
+                            if (partsAdded == false) // validates parts added array
                             {
                                 WriteLine("Add parts first!");
                             }
@@ -77,16 +77,16 @@ namespace module._12.HW.classArraysObjects
                                     WriteLine("Which part would you like to view detail on? "); // Ask the user which part they would like to view data on
                                     for (int z = 0; z < partArray.Length; z++)
                                     {
-                                        WriteLine("{0,8}{1,20}{2,20}", z + 1, partArray[z].PartNumber, partArray[z].PartName);
+                                        WriteLine("{0,8}{1,20}{2,20}", z + 1, partArray[z].PartNumber, partArray[z].PartName); //shows basic list of parts on record
                                     }
 
-                                    int selectedPart = Convert.ToInt32(ReadLine());
+                                    int selectedPart = Convert.ToInt32(ReadLine()); // initialize variable for user to select part from list
 
                                     partDisplay(partArray[selectedPart - 1]); //Create a method to print out the object selected by user values
                                 }
                                 catch (IndexOutOfRangeException e) // if selected array index is out of bounds
                                 {
-                                    WriteLine($"Please choose an existing part!");
+                                    WriteLine($"Please choose an existing part!"); // exception user response for array index out of bounds
                                 }
                             }
 
@@ -97,17 +97,17 @@ namespace module._12.HW.classArraysObjects
                             return;
 
                         default:
-                            WriteLine("Invalid menu selection. Choose 1 through 4.");
+                            WriteLine("Invalid menu selection. Choose 1 through 4."); // reprompt for valid input
                             break;
                     }
                 }
                 catch (FormatException)
                 {
-                    WriteLine("Invalid choice, if you wish to end the program, press 4.");
+                    WriteLine("Invalid choice, if you wish to end the program, press 4."); // reprompt for valid input
                 }
             }
         }
-        static void populatePart(ref Part p)
+        static void populatePart(ref Part p) // add values to fields of Part class
         {
             WriteLine("Enter the part number: ");
             string number = ReadLine();
@@ -121,12 +121,12 @@ namespace module._12.HW.classArraysObjects
             WriteLine("Enter the part cost: ");
             decimal cost = Convert.ToDecimal(ReadLine());
 
-            p = new Part(number, name, des, cost);
+            p = new Part(number, name, des, cost); // Part constructor bits (how the class builds the object)
         }
-        static void partDisplay(Part p)
+        static void partDisplay(Part p) // display a single part only carries a single object from partArray[selectedPart - 1]
         {
             WriteLine("{0,12}{1,20}{2,30}{3,20}", "Part Number", "Part Name", "Part Description", "Part Cost");
-            WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);
+            WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);  // p = object blueprint here, object.x displays the selected object field
         }
     }
 }
