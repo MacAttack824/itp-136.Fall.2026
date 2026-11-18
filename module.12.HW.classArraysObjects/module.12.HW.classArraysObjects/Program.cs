@@ -82,7 +82,7 @@ namespace module._12.HW.classArraysObjects
 
                                     int selectedPart = Convert.ToInt32(ReadLine()); // initialize variable for user to select part from list
 
-                                    partDisplay(partArray[selectedPart - 1]); //Create a method to print out the object selected by user values
+                                    partDisplay(ref partArray[selectedPart - 1]); //Create a method to print out the object selected by user values
                                 }
                                 catch (IndexOutOfRangeException e) // if selected array index is out of bounds
                                 {
@@ -123,7 +123,7 @@ namespace module._12.HW.classArraysObjects
 
             p = new Part(number, name, des, cost); // Part constructor bits (how the class builds the object)
         }
-        static void partDisplay(Part p) // display a single part only carries a single object from partArray[selectedPart - 1]
+        static void partDisplay(ref Part p) // display a single part only carries a single object from partArray[selectedPart - 1]
         {
             WriteLine("{0,12}{1,20}{2,30}{3,20}", "Part Number", "Part Name", "Part Description", "Part Cost");
             WriteLine("{0,12}{1,20}{2,30}{3,20:C2}", p.PartNumber, p.PartName, p.PartDescription, p.PartCost);  // p references the selected Part object; its properties provide the data to display
