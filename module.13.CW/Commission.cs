@@ -14,9 +14,10 @@ namespace module._13.CW
             Sales = commis;
         }
 
-        public double Sales {
+        public double Sales
+        {
             get { return payAmt; }
             set { payAmt = value * .02; }
-
+        }
     }
 }
