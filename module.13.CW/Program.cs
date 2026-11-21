@@ -36,7 +36,7 @@
                 string fn = ReadLine();
 
                 WriteLine("Please enter the employee salary");
-                double sa = Convert.ToInt32(ReadLine());
+                double sa = Convert.ToDouble(ReadLine());
 
                 salList.Add(new Salary(empNum, fn, sa));
 
