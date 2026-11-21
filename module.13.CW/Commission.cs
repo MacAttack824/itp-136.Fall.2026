@@ -8,11 +8,15 @@ namespace module._13.CW
 {
     public class Commission : Employee
     {
+        double payAmt;
         public Commission(int num, string fn, double commis) : base(num, fn)
         {
             Sales = commis;
         }
 
-        public double Sales { get; set; }
+        public double Sales {
+            get { return payAmt; }
+            set { payAmt = value * .02; }
+
     }
 }
