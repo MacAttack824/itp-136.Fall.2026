@@ -10,45 +10,52 @@
             // A.Welcome statement to your program
             WelcomeMessage();
 
-
-
             // B.Ask for the number students user wants to enter.Add each student
             // entered by the user to a student list.
-
-
+            int studentCount = StudentCounter();
 
             // C.Ask for the number of teachers the user wants to enter.Add each teacher
             // entered by user to the teacher list.
-
-
+            int teacherCount = TeacherCounter();
 
             // D.Print out the students with headers.
-
-
+            DisplayStudent();
 
             // E.Print out the teachers with headers.
+            DisplayTeacher();
+
+            ReadKey();
         }
+
+
         // Methods
         static void WelcomeMessage()
         {
-            WriteLine("Welcome to Mac's Magician Ministry");   //Think 'Hogwarts'
-
-            StudentCounter();
-
-
-            TeacherCounter();
+            WriteLine("Welcome to Mac's Magician Ministry");   //Think 'Hogwarts
         }
-        static int StudentCounter();
+
+        static int StudentCounter()
         {
-            WriteLine("Welcome to Mac's Magician Ministry");   //Think 'Hogwarts'
-            int StudentCount = Convert.ToInt32(Readline());
-            return StudentCount;
+            WriteLine("XXXX");   //Think 'Hogwarts'
+            int studentCount = Convert.ToInt32(ReadLine());
+            return studentCount;
+        }
+
+        static int TeacherCounter()
+        {
+            WriteLine("XXXX");   //Think 'Hogwarts'
+            int teacherCount = Convert.ToInt32(ReadLine());
+            return teacherCount;
 
 
         }
-        static int TeacherCounter();
+        static void DisplayStudent()
         {
-            WriteLine("Welcome to Mac's Magician Ministry");   //Think 'Hogwarts'
-    }
+            WriteLine("");
+        }
+        static void DisplayTeacher()
+        {
+            WriteLine("");
+        }
     }
 }

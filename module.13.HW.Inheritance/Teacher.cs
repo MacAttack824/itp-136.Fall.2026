@@ -15,13 +15,13 @@ namespace module._13.HW.Inheritance
 
         // visual from Person class  :  public Person(int idNum, string fullName, string address) Inherited class
     {
-        public Teacher(int idNum, string fullName, string address, int salary, int yearsOfService) : base(idNum, fullName, address) // base brings in Parent class , constructor
+        public Teacher(int idNum, string fullName, string address, decimal salary, int yearsOfService) : base(idNum, fullName, address) // : BASE    Calls the base class constructor
 
         {
             Salary = salary; //Assignments
             YearsOfService = yearsOfService;
         }
-        public int Salary { get; set; }   //Properties
+        public decimal Salary { get; set; }   //Properties
         public int YearsOfService { get; set; }
     }
 }

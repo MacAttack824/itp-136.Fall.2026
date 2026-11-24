@@ -15,8 +15,8 @@ namespace module._13.HW.Inheritance
         
         // visual from Person class  :  public Person(int idNum, string fullName, string address)  Inherited class
     {
-        public Student( int idNum, string fullName, string address, string major, string advisor) : base(idNum, fullName, address)  
-            // student class constructor with person as : BASE
+        public Student( int idNum, string fullName, string address, string major, string advisor) : base(idNum, fullName, address) // : BASE    Calls the base class constructor
+        
         {
             Major = major;   // assignments
             Advisor = advisor;
