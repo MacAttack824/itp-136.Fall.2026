@@ -100,7 +100,7 @@
             WriteLine("{0,20}{1,20}{2,30}{3,15}{4,20}", "Student ID","Student Name","Student Address", "Student Major", "Student Advisor");
             foreach (Student s in studentList)
             {
-                WriteLine("{0,10}{1,20}{2,30}{3,15}{4,20}", s.IDNum, s.FullName, s.Address, s.Major, s.Advisor);
+                WriteLine("{0,20}{1,20}{2,30}{3,15}{4,20}", s.IDNum, s.FullName, s.Address, s.Major, s.Advisor);
             }
         }
         static void DisplayTeacher(List<Teacher> teacherList)
