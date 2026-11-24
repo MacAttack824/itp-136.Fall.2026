@@ -87,8 +87,9 @@
                 WriteLine($"Enter student {x + 1} Advisor: "); // enters student advisor
                 string advisor = ReadLine();
 
-                Student s = new Student(idNum, fullName, address, major, advisor); //calls class and variable 's' to create new Student object with constructors of base person and Student 
-                studentList.Add(s);  // adds 's' to the student list
+                Student s = new Student(idNum, fullName, address, major, advisor); //Instantiates a Student Object using its constructor, which also calls base Person constructor.
+                                                                                   //Variable 's' references the new Student object. 
+                studentList.Add(s); // adds 's' to the student list
             }
         }
 
@@ -116,7 +117,8 @@
                 WriteLine($"Enter teacher {y + 1} Years of Service: "); // enters teacher years of service
                 int yearsOfService = ValidateInt();
 
-                Teacher t = new Teacher(idNum, fullName, address, salary, yearsOfService); // variable 't' for teacher to identify new object Teacher
+                Teacher t = new Teacher(idNum, fullName, address, salary, yearsOfService); // Instantiates a Teacher object using its constructor which also calls Person constructor.
+                                                                                           // variable 't' references the new Teacher object
                 teacherList.Add(t); // adds teacher to list with variable 't'
             }
         }
@@ -125,7 +127,7 @@
         static void DisplayStudent(List<Student> studentList)
         {
             WriteLine("\n{0,-15}{1,-20}{2,-30}{3,-15}{4,-20}", "Student ID","Student Name","Student Address", "Student Major", "Student Advisor"); // Header
-            foreach (Student s in studentList) // foreach loops through each 's' of the students in the list 
+            foreach (Student s in studentList) // iterates through each Student in studentList 
             {
                 WriteLine("{0,-15}{1,-20}{2,-30}{3,-15}{4,-20}", s.IDNum, s.FullName, s.Address, s.Major, s.Advisor); // use student properties to 'get'
             }
@@ -135,7 +137,7 @@
         static void DisplayTeacher(List<Teacher> teacherList)
         {
             WriteLine("\n{0,-15}{1,-20}{2,-30}{3,-15}{4,-20}", "Teacher ID", "Teacher Name", "Teacher Address", "Teacher Salary", "Years of Service"); // Header
-            foreach (Teacher t in teacherList) //foreach loops through each 't' of the teachers in the list
+            foreach (Teacher t in teacherList) // iterates though each Teacher in teacherList
             { 
                 WriteLine("{0,-15}{1,-20}{2,-30}{3,14:C2}{4,17}", t.IDNum, t.FullName, t.Address, t.Salary, t.YearsOfService); // use teacher properties, the 'get' of the class
             }
@@ -146,9 +148,9 @@
         {
             int validInt;  // declare int validInt variable
             string i = ReadLine(); // read user input as string
-            bool valid = int.TryParse(i, out validInt); // declare bool to test if input can be changed to data type int. if passes valid == True
+            bool valid = int.TryParse(i, out validInt); // declare bool to test if input can be changed to data type int. if passes valid == True, stores result in validInt
 
-            while (!valid) // while valid data is false, loops until valid data is recieved
+            while (!valid) // while boolean is false, loops while conversion is unsuccessful
             {
                 WriteLine("Please enter valid integer"); // reiterate the requested input
                 i = ReadLine(); 
@@ -160,9 +162,9 @@
         {
             decimal validDec; // declare decimal validDec variable
             string d = ReadLine(); // read user input as string
-            bool valid = decimal.TryParse(d, out validDec); // declare bool to test if input can be changed to data type int. if passes valid == True
+            bool valid = decimal.TryParse(d, out validDec); // declare bool to test if input can be changed to data type decimal. if passes valid == True and stores result in validDec
 
-            while (!valid)// while valid data is false, loops until valid data is recieved
+            while (!valid) // while boolean is false, loops while conversion is unsuccessful
             {
                 WriteLine("Please enter valid decimal"); // reiterate the requested input
                 d = ReadLine();
