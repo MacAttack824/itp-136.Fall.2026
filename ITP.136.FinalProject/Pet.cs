@@ -4,18 +4,20 @@ using System.Text;
 
 namespace ITP._136.FinalProject
 {
-    public class Pet : Owner
+    public class Pet
     {
-        public Pet(string fn, string ln, string address, int ownerId, int petID, string petName, string petSpecies) : base(fn, ln, address, ownerId)
+        public Pet(int petID, string petName, string petSpecies, Owner petOwnerID)
         {
             PetID = petID;
             PetName = petName;
             PetSpecies = petSpecies;
+            PetOwnerID = petOwnerID;
         }
 
         public int PetID { get; set; }
         public string PetName { get; set; }
         public string PetSpecies { get; set; }
+        public Owner PetOwnerID { get; set; }
 
     }
 }
