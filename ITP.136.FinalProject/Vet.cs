@@ -10,7 +10,6 @@ namespace ITP._136.FinalProject
         {
             EmpId = empId;
         }
-        
         public int EmpId { get; set; }
 
     }

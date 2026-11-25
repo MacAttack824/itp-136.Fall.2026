@@ -10,8 +10,6 @@ namespace ITP._136.FinalProject
         {
             OwnerId = ownerId;
         }
-
         public int OwnerId { get; set; }
-
     }
 }
